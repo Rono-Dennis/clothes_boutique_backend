@@ -18,7 +18,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: root
     ports:
-      - "8086:8086"
+      - "8086"
     depends_on:
       - mysql-container-2
 

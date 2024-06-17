@@ -1,3 +1,17 @@
+FROM dvmarques/openjdk-17-jdk-alpine-with-timezone
+WORKDIR /opt
+ENV PORT 8283
+EXPOSE 8283
+COPY target/*.jar /opt/spring-api-docker.jar
+ENTRYPOINT exec java $JAVA_OPTS -jar spring-api-docker.jar
+
+
+
+
+
+
+
+
 ## Use an official OpenJDK runtime as a parent image
 #FROM openjdk:17-jdk-alpine
 #
@@ -20,19 +34,19 @@
 
 
 #
-FROM openjdk:17
-
-# Expose the port the application will run on
-EXPOSE 8086
-
-# Argument for the JAR file
-ARG JAR_FILE=target/*.jar
-
-# Copy the JAR file into the container
-COPY ${JAR_FILE} /spring-api-docker.jar
-
-# Run the JAR file
-ENTRYPOINT ["java", "-jar", "/spring-api-docker.jar"]
+#FROM openjdk:17
+#
+## Expose the port the application will run on
+#EXPOSE 8086
+#
+## Argument for the JAR file
+#ARG JAR_FILE=target/*.jar
+#
+## Copy the JAR file into the container
+#COPY ${JAR_FILE} /spring-api-docker.jar
+#
+## Run the JAR file
+#ENTRYPOINT ["java", "-jar", "/spring-api-docker.jar"]
 
 
 
