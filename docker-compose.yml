@@ -10,21 +10,57 @@ services:
       - "3309:3306"
 
   spring-boot-app:
-    image: ronodennis/spring-api-docker:1.9
+    image: ronodennis/spring-api-docker:2.0
     container_name: spring-boot-app
     environment:
-      MYSQL_HOST: mysql-container-2
-      MYSQL_PORT: 3306
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      DB_SERVER: mysql-container-2
+      DB_PORT: 3306
+      DB_NAME: project
+      DB_USERNAME: root
+      DB_PASSWORD: root
     ports:
-      - "8086"
+      - "8086:8383"
     depends_on:
       - mysql-container-2
 
 networks:
   default:
     driver: bridge
+
+
+
+
+
+
+
+
+#version: '3.8'
+#services:
+#  mysql-container-2:
+#    image: mysql:8.0
+#    container_name: mysql-container-2
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root
+#      MYSQL_DATABASE: project
+#    ports:
+#      - "3309:3306"
+#
+#  spring-boot-app:
+#    image: ronodennis/spring-api-docker:1.9
+#    container_name: spring-boot-app
+#    environment:
+#      MYSQL_HOST: mysql-container-2
+#      MYSQL_PORT: 3306
+#      MYSQL_USER: root
+#      MYSQL_PASSWORD: root
+#    ports:
+#      - "8086"
+#    depends_on:
+#      - mysql-container-2
+#
+#networks:
+#  default:
+#    driver: bridge
 
 
 
